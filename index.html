@@ -1,0 +1,54 @@
+<!doctype HTML>
+<html ng-app>
+
+<head>
+	<title>Angular application</title>
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+
+</head>
+
+<body ng-controller="customerController">
+
+	<h2 style="text-align:center;">CUSTOMERS</h2>
+
+	<div style="text-align:center;">
+	<b>FILTER : </b>
+	<input type="text" ng-model="customerFilter.name" style="width:200px;"/ >
+	</div>
+
+	<br/>
+	<br/>
+
+	<table class="bordered striped ">
+
+		<tr>
+			<td><b>NAME</b></td>
+			<td><b>CITY</b></td>
+			<td><b>JOINED</b></td>
+
+		</tr>
+
+		<tr ng-repeat="cus in customers | filter:customerFilter | orderBy:'name'" >
+			<td> {{ cus.name |  uppercase }} </td>
+			<td> {{ cus.city | uppercase }}</td>
+			<td> {{ cus.joined | date }} </td>
+		</tr>
+
+	</table>
+
+<span> Total customers: {{ customers.length }}</span>
+
+	<script src="angular.js"></script>
+	<script src="app/controllers/customerController.js"></script>
+
+</body>
+
+
+
+
+
+
+
+
+</html>
