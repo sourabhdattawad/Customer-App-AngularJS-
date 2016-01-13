@@ -1,5 +1,15 @@
 
-app.controller('customerController',function ($scope){
+app.controller('ordersController',function ($scope, $routeParams){
+		var customerId = $routeParams.customerId;
+		$scope.orders = null;
+		function init(){
+			for(var i =0;i<3;i++){
+				if($scope.customers[i].id=== parseInt(customerId)){
+					$scope.orders = $scope.customers[i].orders;
+					break;
+				}
+			}
+		}
 		
 		$scope.customers = [
 
@@ -44,6 +54,6 @@ app.controller('customerController',function ($scope){
 		}
 
 		];
-	
+		init();
 
 });
